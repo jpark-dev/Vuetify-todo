@@ -12,6 +12,7 @@
       clearable
     ></v-text-field>
     <v-list
+      v-if="tasks.length"
       class="pt-0"
       flat
     >
@@ -51,6 +52,20 @@
         <v-divider />
       </div>
     </v-list>
+    <div
+      v-else
+      class="no-tasks"
+    >
+      <v-icon
+        size="100"
+        color="primary"
+      >
+        mdi-check
+      </v-icon>
+      <div class="text-h5 primary--text">
+        No tasks
+      </div>
+    </div>
   </div>
 </template>
 
@@ -60,23 +75,7 @@
   data() {
     return {
       newTaskTitle: '',
-      tasks: [
-        {
-          id: 1,
-          title: 'Wake up',
-          done: false,
-        },
-        {
-          id: 2,
-          title: 'Get bananas',
-          done: false,
-        },
-        {
-          id: 3,
-          title: 'Eat bananas',
-          done: false,
-        },
-      ]
+      tasks: [],
     }
   },
   methods: {
@@ -99,3 +98,11 @@
   }
 }
 </script>
+
+<style lang="sass">
+  .no-tasks
+    position: absolute
+    left: 40%
+    right: 30%
+    opacity: 0.5
+</style>
