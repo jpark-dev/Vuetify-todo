@@ -1,15 +1,15 @@
 <template>
   <v-text-field
-      v-model="newTaskTitle"
-      @click:append="addTask"
-      @keyup.enter="addTask"
-      class="pa-3"
-      outlined
-      label="Add to Task"
-      append-icon="mdi-plus"
-      hide-details
-      clearable
-    ></v-text-field>
+    v-model="newTaskTitle"
+    @click:append="addTask"
+    @keyup.enter="addTask"
+    class="pa-3"
+    outlined
+    label="Add to Task"
+    append-icon="mdi-plus"
+    hide-details
+    clearable
+  />
 </template>
 
 <script>
