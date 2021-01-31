@@ -6,22 +6,21 @@
   >
     <v-card>
       <v-card-title class="headline">
-        Use Google's location service?
+        Delete Task?
       </v-card-title>
-      <v-card-text>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running.</v-card-text>
+      <v-card-text>Are you sure to delete this awesome task that can change your life?</v-card-text>
       <v-card-actions>
-        <v-spacer></v-spacer>
+        <v-spacer />
         <v-btn
-          color="green darken-1"
           text
-          @click="dialog = false"
+          @click="$emit('close')"
         >
           Disagree
         </v-btn>
         <v-btn
-          color="green darken-1"
+          @click="$store.dispatch('deleteTask', task.id)"
+          color="red darken-1"
           text
-          @click="dialog = false"
         >
           Agree
         </v-btn>
@@ -32,7 +31,7 @@
 
 <script>
 export default {
-
+  props: ['task'],
 }
 </script>
 
