@@ -15,14 +15,14 @@
           text
           @click="$emit('close')"
         >
-          Disagree
+          No
         </v-btn>
         <v-btn
           @click="$store.dispatch('deleteTask', task.id)"
           color="red darken-1"
           text
         >
-          Agree
+          Yes
         </v-btn>
       </v-card-actions>
     </v-card>
