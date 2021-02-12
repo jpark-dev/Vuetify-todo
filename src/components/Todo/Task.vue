@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import { format } from 'date-fns';
+import moment from 'moment';
 
 export default {
   props: ['task'],
   filters: {
     niceDate(value) {
-      return format(new Date(value), 'MMM dd');
+      return moment(value).format("MMM DD");
     }
   },
   components: {
