@@ -5,7 +5,26 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    tasks: [],
+    tasks: [
+      {
+        id: 1,
+        title: 'Apply for student benefit',
+        done: false,
+        dueDate: '2021-02-10',
+      },
+      {
+        id: 2,
+        title: 'Do the laundry',
+        done: false,
+        dueDate: '2021-02-11',
+      },
+      {
+        id: 3,
+        title: 'Get the pay cheque',
+        done: false,
+        dueDate: null,
+      },
+    ],
     snackbar: {
       show: false,
       text: '',
@@ -17,6 +36,7 @@ export default new Vuex.Store({
         id: Date.now(),
         title: newTaskTitle,
         done: false,
+        dueDate: null,
       };
       state.tasks.push(newTask);
     },
