@@ -39,6 +39,7 @@
     </v-navigation-drawer>
 
     <v-app-bar
+      class="pt-2"
       app
       color="primary"
       dark
@@ -52,21 +53,26 @@
         ></v-img>
       </template>
 
-      <v-app-bar-nav-icon
-        @click="drawer = !drawer"
-      ></v-app-bar-nav-icon>
+      <v-container class="pa-0">
+        <v-row>
+          <v-app-bar-nav-icon
+            @click="drawer = !drawer"
+          />
+          <v-spacer></v-spacer>
+          <search />
+        </v-row>
+        <v-row>
+          <v-app-bar-title class="ml-4">Vuetify Todo</v-app-bar-title>
+        </v-row>
+      </v-container>
 
-      <v-app-bar-title>Vuetify Todo</v-app-bar-title>
-
-      <v-spacer></v-spacer>
-
-      <search />
     </v-app-bar>
 
     <v-main>
       <router-view></router-view>
       <snackbar />
     </v-main>
+
   </v-app>
 </template>
 
