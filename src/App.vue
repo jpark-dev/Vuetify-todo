@@ -60,16 +60,10 @@
 
       <v-spacer></v-spacer>
 
+      <search />
+
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
     </v-app-bar>
 
@@ -81,7 +75,6 @@
 </template>
 
 <script>
-import Snackbar from './components/Common/Snackbar.vue'
   export default {
     data: () => ({
       drawer: null,
@@ -91,7 +84,8 @@ import Snackbar from './components/Common/Snackbar.vue'
       ],
     }),
     components: {
-      Snackbar,
+      'search': require('@/components/Tools/Search.vue').default,
+      'snackbar': require('@/components/Common/Snackbar.vue').default,
     }
   }
 </script>
