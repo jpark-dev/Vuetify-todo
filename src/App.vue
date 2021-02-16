@@ -74,7 +74,7 @@
         </v-row>
         <v-row>
           <v-app-bar-title class="text-h4 ml-4">
-            Vuetify Todo
+            {{ $store.state.appTitle }}
           </v-app-bar-title>
         </v-row>
         <v-row>
@@ -105,7 +105,7 @@
       'search': require('@/components/Tools/Search.vue').default,
       'live-date-time': require('@/components/Tools/LiveDateTime.vue').default,
       'snackbar': require('@/components/Common/Snackbar.vue').default,
-    }
+    },
   }
 </script>
 
