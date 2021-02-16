@@ -2,21 +2,31 @@
   <v-app id="inspire">
     <v-navigation-drawer
       v-model="drawer"
+      :mobile-breakpoint="768"
       app
     >
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title">
-            Vueitfy Todo
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Best Todo Ever
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
+      <v-img
+        class="pa-4"
+        src="coding-bg.jpg"
+        height="150"
+        gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+      >
+        <v-avatar
+          class="mb-2"
+          size="70"
+        >
+          <img
+            src="pika.webp"
+            alt="Jason Park"
+          >
+        </v-avatar>
+        <div class="white--text text-subtitle-1 font-weight-bold">
+          Pika Chu
+        </div>
+        <div class="white--text text-subtitle-2">
+          chu@pika.com
+        </div>
+      </v-img>
       <v-list
         dense
         nav
@@ -54,7 +64,7 @@
         ></v-img>
       </template>
 
-      <v-container class="pa-0">
+      <v-container class="header-container pa-0">
         <v-row>
           <v-app-bar-nav-icon
             @click="drawer = !drawer"
@@ -85,7 +95,7 @@
 <script>
   export default {
     data: () => ({
-      drawer: null,
+      drawer: true,
       items: [
         { title: 'Todo', icon: 'mdi-format-list-checks', to: '/' },
         { title: 'About', icon: 'mdi-help-box', to: '/about' },
@@ -98,3 +108,8 @@
     }
   }
 </script>
+
+<style lang="sass">
+  .header-container
+    max-width: none !important,
+</style>
