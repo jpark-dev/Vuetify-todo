@@ -4,11 +4,11 @@
     flat
   >
     <draggable
-      :list="$store.getters.tasksFiltered"
+      v-model="tasks"
       handle=".handle"
     >
       <task
-        v-for="task in $store.getters.tasksFiltered"
+        v-for="task in tasks"
         :key="task.id"
         :task="task"
       />
@@ -24,6 +24,16 @@ export default {
   components: {
     Task,
     draggable,
-  }
+  },
+  computed: {
+    tasks: {
+      get() {
+        return this.$store.getters.tasksFiltered;
+      },
+      set(value) {
+        this.$store.commit('setTasks', value);
+      },
+    }
+  },
 }
 </script>
