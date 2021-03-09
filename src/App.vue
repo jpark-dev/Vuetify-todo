@@ -55,12 +55,12 @@
       dark
       src="coding-bg.jpg"
       prominent
-      height="150"
+      height="200"
     >
       <template v-slot:img="{ props }">
         <v-img
           v-bind="props"
-          gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+          gradient="to top right, rgba(19,84,122,.6), rgba(128,208,199,.9)"
         ></v-img>
       </template>
 
@@ -79,6 +79,9 @@
         </v-row>
         <v-row>
           <live-date-time />
+        </v-row>
+        <v-row>
+          <field-add-task />
         </v-row>
       </v-container>
 
@@ -108,6 +111,7 @@
       'search': require('@/components/Tools/Search.vue').default,
       'live-date-time': require('@/components/Tools/LiveDateTime.vue').default,
       'snackbar': require('@/components/Common/Snackbar.vue').default,
+      FieldAddTask: require('@/components/Todo/FieldAddTask.vue').default,
     },
   }
 </script>
