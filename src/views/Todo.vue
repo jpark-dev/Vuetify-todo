@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import ButtonDoneSorting from '../components/Todo/ButtonDoneSorting.vue'
 export default {
   name: 'Home',
   components: {
