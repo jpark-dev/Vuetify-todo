@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import Localbase from 'localbase'
  
 let db = new Localbase('db');
+db.config.debug = false;
 
 Vue.use(Vuex);
 
@@ -10,26 +11,7 @@ export default new Vuex.Store({
   state: {
     appTitle: process.env.VUE_APP_TITLE,
     search: null,
-    tasks: [
-      // {
-      //   id: 1,
-      //   title: 'Apply for student benefit',
-      //   done: false,
-      //   dueDate: '2021-02-10',
-      // },
-      // {
-      //   id: 2,
-      //   title: 'Do the laundry',
-      //   done: false,
-      //   dueDate: '2021-02-11',
-      // },
-      // {
-      //   id: 3,
-      //   title: 'Get the pay cheque',
-      //   done: false,
-      //   dueDate: null,
-      // },
-    ],
+    tasks: [],
     snackbar: {
       show: false,
       text: '',
@@ -98,24 +80,38 @@ export default new Vuex.Store({
         done: !task.done,
       }).then(() => {
         commit('doneTask', id);
-      })
+      });
     },
     deleteTask({ commit }, id) {
-      commit('deleteTask', id);
-      commit('showSnackbar', 'Task deleted!');
+      db.collection('tasks').doc({ id }).delete().then(() => {
+        commit('deleteTask', id);
+        commit('showSnackbar', 'Task deleted!');
+      });
     },
     updateTaskTitle({ commit }, payload) {
-      commit('updateTaskTitle', payload);
-      commit('showSnackbar', 'Task updated!');
+      db.collection('tasks').doc({ id: payload.id }).update({
+        title: payload.title,
+      }).then(() => {
+        commit('updateTaskTitle', payload);
+        commit('showSnackbar', 'Task updated!');
+      });
     },
     updateTaskDueDate({ commit }, payload) {
-      commit('updateTaskDueDate', payload);
-      commit('showSnackbar', 'DueDate updated!');
+      db.collection('tasks').doc({ id: payload.id }).update({
+        dueDate: payload.dueDate,
+      }).then(() => {
+        commit('updateTaskDueDate', payload);
+        commit('showSnackbar', 'DueDate updated!');
+      });
     },
     getTasks({ commit }) {
       db.collection('tasks').get().then(tasks => {
         commit('setTasks', tasks);
       });
+    },
+    setTasks({ commit }, tasks) {
+      db.collection('tasks').set(tasks);
+      commit('setTasks', tasks);
     },
   },
   getters: {
